@@ -1,7 +1,12 @@
+import React from "react";
+import Header from "./component/Header";
+import Search from "./component/Search";
+
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Header/>
+      <Search/>
     </div>
   );
 }
