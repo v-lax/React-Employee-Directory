@@ -2,16 +2,20 @@ import React from "react";
 import TableRow from "./TableRow";
 
 function Table(props) {
+    const sortTable = (event)=>{
+        const header = event.target.textContent
+        props.sort(header);
+    } 
     return (
         <table className="table table-dark justify-content-center">
             <thead>
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Phone</th>
+                    <th scope="col" onClick={sortTable}>Name</th>
+                    <th scope="col" onClick={sortTable}>Email</th>
+                    <th scope="col" onClick={sortTable}>Age</th>
+                    <th scope="col" onClick={sortTable}>State</th>
+                    <th scope="col" onClick={sortTable}>Phone</th>
                 </tr>
             </thead>
             <tbody>

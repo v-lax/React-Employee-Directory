@@ -12,7 +12,7 @@ function Search(props) {
     return (
         <nav className="navbar navbar-light bg-light justify-content-center">
             <form className="form-inline">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onKeyUp={searchFunction}/>
+                <input className="form-control mr-sm-2" type="search" placeholder="Search by Name" aria-label="Search" onKeyUp={searchFunction}/>
             </form>
         </nav>
     )

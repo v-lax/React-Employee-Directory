@@ -4,6 +4,7 @@ import Search from "./component/Search";
 import Table from "./component/Table";
 import axios from "axios";
 import "./style.css"
+import { findAllByTestId } from "@testing-library/react";
 
 let data; 
 
@@ -11,7 +12,8 @@ class App extends React.Component {
   state = {
     loading: true,
     employeeList: {},
-    filteredList:null
+    filteredList:null,
+    ascending:true
   }
 
   async componentDidMount(){
@@ -36,13 +38,55 @@ class App extends React.Component {
     this.setState({filteredList:filteredList});
   }
 
-  sort = (int) =>{
-    
-    if(int===0){
+  sort = (header) =>{
 
-    }else if(int===1){
-
+    if(header==='Name'){
+      if(this.state.ascending===true){
+        this.sortAscending(this.state.filteredList)
+        this.setState({ascending:false})
+      }
+      if(this.state.ascending===false){
+        this.sortDecending(this.state.filteredList)
+        this.setState({ascending:true})
+      }
+    }else if(header==='Email'){
+      
+    }else if(header==='Age'){
+      
+    }else if(header==="State"){
+  
     }
+  }
+sortAscending = (arr)=>{
+    arr.sort(function(a, b) {
+      var nameA = (a.name.first+a.name.last).toUpperCase(); // ignore upper and lowercase
+      var nameB = (b.name.first+b.name.last).toUpperCase(); // ignore upper and lowercase
+      if (nameA > nameB) {
+        return -1;
+      }
+      if (nameA < nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+    this.setState({filteredList:arr})
+  }
+  
+  sortDecending = (arr)=>{
+    arr.sort(function(a, b) {
+      var nameA = (a.name.first+a.name.last).toUpperCase(); // ignore upper and lowercase
+      var nameB = (b.name.first+b.name.last).toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+    this.setState({filteredList:arr})
   }
 
   render() {
@@ -59,7 +103,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Search searchFunction={this.search}/>
-        <Table employees={this.state.filteredList} />
+        <Table employees={this.state.filteredList} sort={this.sort}/>
       </div>
     );
   }
