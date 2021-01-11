@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/style.css"],"names":[],"mappings":"AAAA,SACI,cAAe,CACf,OAAQ,CACR,QACJ","file":"main.640bea43.chunk.css","sourcesContent":[".spinner{\n    position: fixed;\n    top: 50%;\n    left:50%;\n}"]}
