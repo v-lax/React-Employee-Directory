@@ -1,11 +1,18 @@
 import React from "react";
 
-function Search() {
+function Search(props) {
+
+    const searchFunction = (event)=>{
+        const fullName = event.target.value.trim().toLowerCase();
+        if(event.keyCode===8){
+            props.searchFunction(fullName)
+        }
+        props.searchFunction(fullName);
+    }
     return (
         <nav className="navbar navbar-light bg-light justify-content-center">
             <form className="form-inline">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onKeyUp={searchFunction}/>
             </form>
         </nav>
     )
